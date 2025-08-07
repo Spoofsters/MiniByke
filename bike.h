@@ -14,3 +14,9 @@ uint8_t START_TIMER;
 
 void TIMER_0(); //Use Timer0
 void millis(); //timer function in milliseconds
+
+enum {
+    L_CONST,
+    H_CONST,
+    TOTAL,
+ } BOUNDARIES
