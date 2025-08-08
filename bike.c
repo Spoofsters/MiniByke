@@ -25,4 +25,5 @@ uint32_t Millis() {
 
 //INPUT AND OUTPUT COMMANDS FOR SENSORS
 
+#define "bike.h"
 
