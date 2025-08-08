@@ -23,7 +23,7 @@ uint32_t Millis() {
 
 }
 
-//INPUT AND OUTPUT COMMANDS FOR SENSORS
+//SETTING THE ULTRASONICS 
 
 #define "bike.h"
 

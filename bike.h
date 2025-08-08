@@ -6,11 +6,11 @@
 #include <assert.h>
 #include <stdint.h>
 #include <util/twi.h>
-#include <cys.clk.h>
 
 uint8_t ONGOING_TIMER;
 uint8_t CURRENT_TIMER;
 uint8_t START_TIMER;
 
+//WHIMSICAL FUNCTIONS!
 void TIMER_0(); //Use Timer0
 void millis(); //timer function in milliseconds
