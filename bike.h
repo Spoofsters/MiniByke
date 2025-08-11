@@ -23,6 +23,12 @@ uint8_t START_TIMER;
 void timer0_init(); //Use Timer0
 void millis(); //timer function in milliseconds
 
+enum {
+    L_CONST,
+    H_CONST,
+    TOTAL,
+ } BOUNDARIES
+
 //PIN ID'S to monitor #
 typedef enum {
     PIN_BUTTON,

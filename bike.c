@@ -1,6 +1,13 @@
 #include "bike.h"
 uint32_t milliseconds = 0;
 
+//DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
+int x = 211.2 // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
+int y = 17.6
+  
+L_CONST = (10/x); //FILTER MAXIMUM
+H_CONST = (44/y); //VIBRATION MINIMUM
+
 // TIMER FUNCTIONALITY
 
 
@@ -57,6 +64,7 @@ uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id) {
     *(pin_map[trig_id].port) |= (1 << pin_map[trig_id].bit);
     _delay_us(10);
     *(pin_map[trig_id].port) &= ~(1 << pin_map[trig_id].bit);
+
 
     //Echo needs to go High before counting
     while (!(*(pin_map[echo_id].pin_reg) & (1 << pin_map[echo_id].bit)));
