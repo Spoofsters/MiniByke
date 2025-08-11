@@ -43,6 +43,13 @@ typedef struct {
     uint8_t pull; //Indicates if pull up resistor enabled or not
 } pin_def_t;
 
+typedef enum {
+    RANGE_SUPA_CLOSE,
+    RANGE_CLOSE,
+    RANGE_MEDIUM,
+    RANGE_FAR //Might not need
+} distance_range_t;
+
 void bike_init(void);
 uint8_t button_pressed(void);
 uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id);
