@@ -32,11 +32,24 @@ enum {
 //PIN ID'S to monitor #
 typedef enum {
     PIN_BUTTON,
-    PIN_1_TRIG,
-    PIN_1_ECHO,
-    PIN_2_TRIG,
-    PIN_2_ECHO,
-    PIN_COUNT //6 Total
+
+//ULTRASONIC LEFT
+    PIN_L_TRIG,
+    PIN_L_ECHO,
+
+//ULTRASONIC RIGHT
+    PIN_R_TRIG,
+    PIN_R_ECHO,
+
+//Left LEDS/VIBCOINS
+    PIN_L_LED,
+    PIN_L_VIB,
+
+//Right LEDS/VIBCOINS
+    PIN_R_LED,
+    PIN_R_VIB,
+
+    PIN_COUNT //10
 } pin_id_t;
 
 //STRUCT FOR PINS LAYOUT
