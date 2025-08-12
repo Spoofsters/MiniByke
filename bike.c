@@ -1,14 +1,22 @@
 #include "bike.h"
+
 uint32_t milliseconds = 0;
 
 //DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
 float x = 211.2; // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
 float y = 17.6;
-  
-float L_CONST;
-float H_CONST;
 
 // TIMER FUNCTIONALITY
+
+
+typedef struct {
+    volatile uint8_t *ddr;
+    volatile uint8_t *port;
+    volatile uint8_t *pin_reg;
+    uint8_t bit;
+    uint8_t dir; //Indicator if pin is input or output
+    uint8_t pull; //Indicates if pull up resistor enabled or not
+} pin_def_t;
 
 
 void timer0_init(void) {
@@ -81,12 +89,6 @@ uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id) {
     return (count_us * 0.0343) / 2;
 }
 
-distance_range_t get_range(uint16_t dist_cm) {
-    if (dist_cm < 10)  return RANGE_VERY_CLOSE;
-    if (dist_cm < 30)  return RANGE_CLOSE;
-    if (dist_cm < 100) return RANGE_MEDIUM;
-}
-
 void bike_update(void) {
     static uint32_t PREV_TIME = 0;
     uint32_t CURRENT_TIME = millis();
@@ -113,10 +115,13 @@ while (millis()<= 1000){
             break;
         };
 }
-    else{
-        millis() = 0 //Sets Millis to 0
-    }
 }
+
+    // Reset the timer or perform any other necessary actions
+    PREV_TIME = CURRENT_TIME;
+    // Optionally, you can turn off the LED or vibration here
+    PORTD &= ~(1 << VIBRATION_PIN); // Turns Vibration off
+    PORTD &= ~(1 << LED_PIN); // Turns LED off
 
 //SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
 //LED on:

@@ -1,8 +1,9 @@
 #include "bike.h"
+#include "bike.c"
 
 int main(void) {
-    L_CONST = (10 / x);
-    H_CONST = (44 / y);
+    float L_CONST = (10 / x);
+    float H_CONST = (44 / y);
 
     bike_init();
     timer0_init();
