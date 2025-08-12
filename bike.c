@@ -104,32 +104,37 @@ void bike_update(void) {
     //Maybe we can use ultrasonicread here and then use functions with else or if statements
     //since if using switch cases disables us from using changing variables, like millis.
 }
-// while (millis()<= 1000){
-//     switch(count_us){
-//         case count_us <= y: {
-//             break; //Filters out anything in sensor for shorter than Y
-//         };
+void WhoGoesThere(void) 
+{
+    while (millis()<= 1000){
+    switch(count_us){
+        case count_us <= y: {
+            break; //Filters out anything in sensor for shorter than Y
+        };
 
-//         case count_us <= x: {
-//             PORTD |= 1<<VIBRATION_PIN; //Turns Vibration on
-//             break;
-//         };
+        case count_us <= x: {
+            PORTD |= 1<<VIBRATION_PIN; //Turns Vibration on
+            break;
+        };
 
-    //    default:{
-    //         PORTD |= 1<<LED_PIN; //Turns LED on 
-    //         break;
-    //     };
+       default:{
+            PORTD |= 1<<LED_PIN; //Turns LED on 
+            break;
+        };
+    }
+}
+}
 
 
-    // // Reset the timer or perform any other necessary actions
-    // PREV_TIME = CURRENT_TIME;
-    // Optionally, you can turn off the LED or vibration here
-    // PORTD &= ~(1 << VIBRATION_PIN); // Turns Vibration off
-    // PORTD &= ~(1 << LED_PIN); // Turns LED off
+    // Reset the timer or perform any other necessary actions
+    PREV_TIME = CURRENT_TIME;
+    Optionally, you can turn off the LED or vibration here
+    PORTD &= ~(1 << VIBRATION_PIN); // Turns Vibration off
+    PORTD &= ~(1 << LED_PIN); // Turns LED off
 
-//SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
-//LED on:
-//*pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
+SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
+LED on:
+*pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
 
-//vibrationCoin off!!
-//*pin_map[PIN_R_VIB].port &= ~(1 << pin_map[PIN_R_VIB].bit);
+vibrationCoin off!!
+*pin_map[PIN_R_VIB].port &= ~(1 << pin_map[PIN_R_VIB].bit);
