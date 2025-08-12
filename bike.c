@@ -2,8 +2,8 @@
 uint32_t milliseconds = 0;
 
 //DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
-float x = 211.2 // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
-float y = 17.6
+float x = 211.2; // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
+float y = 17.6;
   
 const float L_CONST = (10/x); //FILTER MAXIMUM
 const float H_CONST = (44/y); //VIBRATION MINIMUM
@@ -44,11 +44,6 @@ static const pin_def_t pin_map[PIN_COUNT] = {
     [PIN_R_LED]      = { &DDRB, &PORTB, &PINB, PB1, PIN_OUTPUT, PULL_DISABLED },
     [PIN_R_VIB]      = { &DDRB, &PORTB, &PINB, PB2, PIN_OUTPUT, PULL_DISABLED }
 };
-int LED_PIN = 7 //Categorizing some pins.
-int VIBRATION_PIN = 8 
-DDRD = | (1<<LED_PIN); //Turning ports on for the state machine
-DDRD = | (1<<VIBRATION_PIN); 
-
 
 void bike_init(void) {
     for (uint8_t i = 0; i < PIN_COUNT; i++) {
@@ -78,7 +73,7 @@ uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id) {
     //Echo needs to go High before counting
     while (!(*(pin_map[echo_id].pin_reg) & (1 << pin_map[echo_id].bit)));
 
-    while (*(pin_map[echo_id].pin_reg) & (1<< pin_map[echo.id].bit)) {
+    while (*(pin_map[echo_id].pin_reg) & (1<< pin_map[echo_id].bit)) {
         delay_us(1);
         count_us++;
     }
@@ -92,6 +87,16 @@ distance_range_t get_range(uint16_t dist_cm) {
     if (dist_cm < 100) return RANGE_MEDIUM;
 }
 
+void bike_update(void) {
+    static uint32_t PREV_TIME = 0;
+    uint32_t CURRENT_TIME = millis();
+
+     uint16_t DIST_LEFT = ultrasonic_read(PIN_L_TRIG, PIN_L_ECHO);
+    uint16_t DIST_RIGHT = ultrasonic_read(PIN_R_TRIG, PIN_R_ECHO);
+    
+    //Maybe we can use ultrasonicread here and then use functions with else or if statements
+    //since if using switch cases disables us from using changing variables, like millis.
+}
 while (millis()<= 1000){
     switch(count_us){
         case count_us <= y: {
@@ -112,3 +117,10 @@ while (millis()<= 1000){
         millis() = 0 //Sets Millis to 0
     }
 }
+
+//SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
+//LED on:
+//*pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
+
+//vibrationCoin off!!
+//*pin_map[PIN_R_VIB].port &= ~(1 << pin_map[PIN_R_VIB].bit);
