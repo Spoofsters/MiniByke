@@ -8,18 +8,13 @@
 #define PULL_DISABLED 0
 #define PULL_ENABLED  1
 //DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
-#define x 211.2 // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
+#define x 211.2 //wCAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
 #define y 17.6
 
 uint32_t ONGOING_TIMER;
 uint32_t CURRENT_TIMER;
 uint32_t START_TIMER; 
 
-<<<<<<< HEAD
-//WHIMSICAL FUNCTIONS!
-void timer0_init(); //Use Timer0
-void millis(); //timer function in milliseconds
-=======
 typedef struct {
     volatile uint8_t *ddr;
     volatile uint8_t *port;
@@ -45,9 +40,9 @@ typedef enum {
 //WHIMSICAL FUNCTIONS!
 void timer0_init(void); //Use Timer0
 uint32_t millis(void); //timer function in milliseconds
->>>>>>> 3be5dae (fixed redundant errors appearing in lookup table)
 
 void bike_init(void);
 uint8_t button_pressed(void);
 uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id);
 void bike_update(void);
+void WhoGoesThere(void);

@@ -2,27 +2,8 @@
 
 uint32_t milliseconds = 0;
 
-<<<<<<< HEAD
-//DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
-float x = 211.2; // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
-float y = 17.6;
-=======
-
->>>>>>> 3be5dae (fixed redundant errors appearing in lookup table)
 
 // TIMER FUNCTIONALITY
-
-
-typedef struct {
-    volatile uint8_t *ddr;
-    volatile uint8_t *port;
-    volatile uint8_t *pin_reg;
-    uint8_t bit;
-    uint8_t dir; //Indicator if pin is input or output
-    uint8_t pull; //Indicates if pull up resistor enabled or not
-} pin_def_t;
-
-
 void timer0_init(void) {
   TCCR0A = 0;
   TCCR0B = (1 << CS01) | (1 << CS00); //Prescaler 64
@@ -104,6 +85,7 @@ void bike_update(void) {
     //Maybe we can use ultrasonicread here and then use functions with else or if statements
     //since if using switch cases disables us from using changing variables, like millis.
 }
+
 void WhoGoesThere(void) 
 {
     while (millis()<= 1000){
@@ -126,15 +108,15 @@ void WhoGoesThere(void)
 }
 
 
-    // Reset the timer or perform any other necessary actions
-    PREV_TIME = CURRENT_TIME;
-    Optionally, you can turn off the LED or vibration here
-    PORTD &= ~(1 << VIBRATION_PIN); // Turns Vibration off
-    PORTD &= ~(1 << LED_PIN); // Turns LED off
+//     // Reset the timer or perform any other necessary actions
+//     PREV_TIME = CURRENT_TIME;
+//     Optionally, you can turn off the LED or vibration here
+//     PORTD &= ~(1 << VIBRATION_PIN); // Turns Vibration off
+//     PORTD &= ~(1 << LED_PIN); // Turns LED off
 
-SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
-LED on:
-*pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
+// SAMPLE CODE TO TURN ON/OFF LED OR VIBRATION COINS:
+// LED on:
+// *pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
 
-vibrationCoin off!!
-*pin_map[PIN_R_VIB].port &= ~(1 << pin_map[PIN_R_VIB].bit);
+// vibrationCoin off!!
+// *pin_map[PIN_R_VIB].port &= ~(1 << pin_map[PIN_R_VIB].bit);
