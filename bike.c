@@ -5,8 +5,8 @@ uint32_t milliseconds = 0;
 float x = 211.2; // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
 float y = 17.6;
   
-const float L_CONST = (10/x); //FILTER MAXIMUM
-const float H_CONST = (44/y); //VIBRATION MINIMUM
+float L_CONST;
+float H_CONST;
 
 // TIMER FUNCTIONALITY
 
@@ -93,7 +93,7 @@ void bike_update(void) {
 
      uint16_t DIST_LEFT = ultrasonic_read(PIN_L_TRIG, PIN_L_ECHO);
     uint16_t DIST_RIGHT = ultrasonic_read(PIN_R_TRIG, PIN_R_ECHO);
-    
+
     //Maybe we can use ultrasonicread here and then use functions with else or if statements
     //since if using switch cases disables us from using changing variables, like millis.
 }
