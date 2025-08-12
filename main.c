@@ -1,5 +1,4 @@
 #include "bike.h"
-#include "bike.c"
 
 int main(void) {
     float L_CONST = (10 / x);

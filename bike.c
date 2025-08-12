@@ -2,27 +2,8 @@
 
 uint32_t milliseconds = 0;
 
-<<<<<<< HEAD
-//DEFINING NUMBERS NEEDED FOR LOW AND HIGH CONSTANTS
-float x = 211.2; // WE CAN REPLACE WITH ACCELEROMETER. CURRENTLY IN INCHES PER SECOND
-float y = 17.6;
-=======
-
->>>>>>> 3be5dae (fixed redundant errors appearing in lookup table)
 
 // TIMER FUNCTIONALITY
-
-
-typedef struct {
-    volatile uint8_t *ddr;
-    volatile uint8_t *port;
-    volatile uint8_t *pin_reg;
-    uint8_t bit;
-    uint8_t dir; //Indicator if pin is input or output
-    uint8_t pull; //Indicates if pull up resistor enabled or not
-} pin_def_t;
-
-
 void timer0_init(void) {
   TCCR0A = 0;
   TCCR0B = (1 << CS01) | (1 << CS00); //Prescaler 64
