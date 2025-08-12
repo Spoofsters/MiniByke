@@ -45,3 +45,4 @@ void bike_init(void);
 uint8_t button_pressed(void);
 uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id);
 void bike_update(void);
+void WhoGoesThere(void);
