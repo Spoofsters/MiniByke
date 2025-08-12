@@ -16,7 +16,7 @@ all: main.elf
 clean:
 	 @rm -rvf *.d *.elf *.o
 
-main.elf: main.o
+main.elf: main.o bike.o
 	 $(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.c
