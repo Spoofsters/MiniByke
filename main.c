@@ -10,4 +10,6 @@ int main(void) {
     while (1) {
        bike_update();
     }
+    
+    WhoGoesThereLeft()
 }

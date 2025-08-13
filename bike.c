@@ -1,7 +1,7 @@
 #include "bike.h"
 
 uint32_t milliseconds = 0;
-
+uint32_t count_us = 0;
 
 // TIMER FUNCTIONALITY
 void timer0_init(void) {
@@ -55,7 +55,6 @@ void bike_init(void) {
 }
 
 uint16_t ultrasonic_read(uint8_t trig_id, uint8_t echo_id) {
-    uint32_t count_us = 0;
     // Trigger pulse
     *(pin_map[trig_id].port) &= ~(1 << pin_map[trig_id].bit);
     _delay_us(2);
@@ -86,27 +85,40 @@ void bike_update(void) {
     //since if using switch cases disables us from using changing variables, like millis.
 }
 
-void WhoGoesThere(void) 
+void WhoGoesThereRIGHT(void) 
 {
-    while (millis()<= 1000){
+while (millis()<= 1000){
+        if (count_us <= y) {
+            //Filter
+        }
 
-    switch(count_us){
-        case count_us <= y: {
-            break; //Filters out anything in sensor for shorter than Y
-        };
+        if (count_us <= x) {
+            *pin_map[PIN_R_VIB].port |= (1 << pin_map[PIN_R_VIB].bit);
+        }
 
-        case count_us <= x: {
-            PORTD |= 1<<VIBRATION_PIN; //Turns Vibration on
-            break;
-        };
+       else{
+            *pin_map[PIN_R_LED].port |= (1 << pin_map[PIN_R_LED].bit);
+        }
+    };
+};
 
-       default:{
-            PORTD |= 1<<LED_PIN; //Turns LED on 
-            break;
+void WhoGoesThereLEFT(void) 
+{
+while (millis()<= 1000){
+        if (count_us <= y) {
+            //Filter
+        }
+
+        if (count_us <= x) {
+            *pin_map[PIN_L_VIB].port |= (1 << pin_map[PIN_L_VIB].bit);
+        }
+
+       else{
+            *pin_map[PIN_L_LED].port |= (1 << pin_map[PIN_L_LED].bit);
         };
     }
 }
-}
+
 
 
 //     // Reset the timer or perform any other necessary actions
